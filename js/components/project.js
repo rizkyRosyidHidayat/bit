@@ -1,6 +1,6 @@
 Vue.component('project-section', {
 	template: `
-		<section class="project">
+		<section class="project" id="project">
 			<div class="container">
 				<div class="text-center mb-5">
 					<div class="headline text-orange mb-1">
@@ -13,8 +13,8 @@ Vue.component('project-section', {
 					</div>
 				</div>
 				<div class="row align-center">
-					<div class="col col-6">
-						<div class="headline font-weight-normal mb-3">
+					<div class="col col-6 col-sm-12 mb-sm-2">
+						<div class="headline font-weight-normal mb-3 text-sm-center">
 							Installaton 2.200 Wat
 						</div>
 						<p class="text-justify">
@@ -31,7 +31,7 @@ Vue.component('project-section', {
 							</button>
 						</a>
 					</div>
-					<div class="col col-6">
+					<div class="col col-6 py-sm-3 col-sm-12">
 						<div class="carousel-project">
 							<div class="carousel-nav">
 								<img 
@@ -70,6 +70,7 @@ Vue.component('project-section', {
 	}),
 	methods: {
 		changeSlide(val) {
+			this.slideActive = 0
 			if (val === 'left') {
 				this.slideActive = this.slides[2]
 				setTimeout(() => {

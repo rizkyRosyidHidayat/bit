@@ -1,11 +1,11 @@
 Vue.component('footer-section', {
 	template: `
-		<footer class="">
+		<footer>
 			<div class="container">
 				<img src="./img/logo.png" alt="logo" />
 				<div class="mb-3 font-weight-bold">PT BTI Energy Indonesia</div>
 				<div class="row">
-					<div class="col col-3">
+					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>Address</b>
 						<p>
 							Jakarta ofce: Jl. Kamal Raya, Jaya 8 No.6, 
@@ -16,7 +16,7 @@ Vue.component('footer-section', {
 							Tonja, Kota Denpasar
 						</p>
 					</div>
-					<div class="col col-3">
+					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>Sercives</b>
 						<p>
 							<a 
@@ -27,7 +27,7 @@ Vue.component('footer-section', {
 							</a>
 						</p>
 					</div>
-					<div class="col col-3">
+					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>Get in Touch</b>
 						<p>
 							www.BTIEnergy.com <br>
@@ -45,7 +45,7 @@ Vue.component('footer-section', {
 							</a>
 						</div>
 					</div>
-					<div class="col col-3">
+					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>We Support</b>
 						<p>
 							<img
@@ -56,7 +56,7 @@ Vue.component('footer-section', {
 					</div>
 				</div>
 			</div>
-			<p class="text-center">
+			<p class="text-center footer">
 				Copyright 2020 PT. BTIEnergy Indonesia
 			</p>
 		</footer>

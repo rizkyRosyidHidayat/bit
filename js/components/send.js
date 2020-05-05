@@ -1,8 +1,8 @@
 Vue.component('send-section', {
 	template: `
-		<section class="send bg-red py-6 mb-5">
+		<section class="send bg-red mb-5">
 			<div class="text-center text-white">
-				<div class="headline font-weight-normal">
+				<div class="headline font-weight-normal mb-sm-2">
 					Gunakanlah LISTRIK Panel Surya untuk Indonesia.
 				</div>
 				<div class="mb-3">

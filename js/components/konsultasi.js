@@ -1,9 +1,9 @@
 Vue.component('konsultasi-section', {
 	template: `
-		<section class="konsultasi">
+		<section class="konsultasi" id="consultation">
 			<div class="container w-100">
 				<div class="row">
-					<div class="col col-6 bg-red text-white py-6">
+					<div class="col col-6 col-sm-12 bg-red text-white py-6">
 						<div class="container">
 							<div class="text-uppercase">
 								<span class="line normal"></span>
@@ -62,8 +62,8 @@ Vue.component('konsultasi-section', {
 							</form>
 						</div>
 					</div>
-					<div class="col col-6 bg-img">
-						<div class="consultation-call d-flex align-center justify-center">
+					<div class="col col-6 bg-img col-sm-12">
+						<div class="consultation-call d-flex align-center justify-center py-sm-3">
 							<div class="text-center">
 								<div class="mb-3">
 									IF YOU WOULD LIKE TO SPEAK WITH SOMEONE DIRECTlY

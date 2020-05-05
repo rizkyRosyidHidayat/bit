@@ -1,6 +1,6 @@
 Vue.component('energy-section', {
 	template: `
-		<section class="energy mb-6">
+		<section class="energy mb-6" id="why?">
 			<div class="container">
 				<div class="text-center mb-3">
 					<div class="headline text-orange mb-1">
@@ -13,8 +13,8 @@ Vue.component('energy-section', {
 					</div>
 				</div>
 				<div class="row align-center">
-					<div class="col col-6">
-						<div class="headline font-weight-normal mb-3">
+					<div class="col col-6 col-sm-12 mb-sm-2">
+						<div class="headline font-weight-normal mb-3 text-sm-center">
 							Easy to Monitoring and Management System
 						</div>
 						<p class="text-justify">
@@ -26,7 +26,7 @@ Vue.component('energy-section', {
 							</button>
 						</a>
 					</div>
-					<div class="col col-6">
+					<div class="col col-6 col-sm-12">
 						<div class="d-flex justify-end">
 							<img 
 								src="./img/easy_management.png" 

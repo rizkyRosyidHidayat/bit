@@ -10,7 +10,28 @@ import './components/team.js'
 import './components/partner.js'
 import './components/send.js'
 import './components/footer.js'
+import './components/sidemenu.js'
 
 const app = new Vue({
-	el: '#app'
+	el: '#app',
+	data: {
+		sidemenu: false
+	},
+	methods: {
+		activatedSidemenu(val) {
+			this.sidemenu = val
+		}
+	}
 })
+
+const navbarNav = document.querySelector('.navbar')
+
+function scrollFunction() {
+	if (document.body.scrollTop > 66 || document.documentElement.scrollTop > 20) {    
+    navbarNav.setAttribute('class', 'navbar active') 
+  } else {
+    navbarNav.setAttribute('class', 'navbar') 
+  }
+}
+
+window.onscroll = function() {scrollFunction()};

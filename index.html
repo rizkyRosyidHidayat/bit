@@ -10,9 +10,11 @@
 <body>
 
 	<div id="app">
-		<header-section></header-section>
+		<header-section @active="activatedSidemenu"></header-section>
 
-		<banner-section></banner-section>
+		<sidemenu-section :side-menu="sidemenu" @active="activatedSidemenu"></sidemenu-section>
+
+		<banner-section></banner-section>		
 
 		<choose-plan></choose-plan>
 

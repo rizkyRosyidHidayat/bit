@@ -1,9 +1,9 @@
 Vue.component('banner-section', {
 	template: `
-		<section class="banner bg-orange">
+		<section class="banner bg-orange" id="overview">
 			<div class="container">
 				<div class="text-center text-white mb-3">
-					<div class="headline">
+					<div class="headline mb-1">
 						Save Your Energy With BTI
 					</div>
 					<span>
@@ -11,7 +11,7 @@ Vue.component('banner-section', {
 					</span>
 				</div>
 				<div class="row">
-					<div class="col w-40">
+					<div class="col w-40 col-sm-12 mb-sm-2">
 						<div class="card">
 							<div class="card-header">
 								<div class="title">
@@ -129,12 +129,13 @@ Vue.component('banner-section', {
 							</div>
 						</div>
 					</div>
-					<div class="col w-60">
+					<div class="col w-60 col-sm-12">
 						<img 
 							src="./img/ilustrasi.png"
 							alt="ilustrasi"
 							style="width: 90%;"
 							align="right"
+							class="col-sm-12"
 						/>
 					</div>
 				</div>

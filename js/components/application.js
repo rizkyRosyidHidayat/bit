@@ -1,6 +1,6 @@
 Vue.component('app-section', {
 	template: `
-		<section class="app">
+		<section class="app" id="application">
 			<div class="container">
 				<div class="text-center mb-6">
 					<div class="headline text-orange mb-1">
@@ -15,7 +15,7 @@ Vue.component('app-section', {
 				<div class="row">
 					<div 
 						v-for="item in feature" :key="item.title"
-						class="col col-4">
+						class="col col-4 col-sm-12 mb-sm-2">
 						<center>
 							<img 
 								:src="'./img/'+item.img"

@@ -1,6 +1,6 @@
 Vue.component('team-section', {
 	template: `
-		<section class="team bg-silver py-6">
+		<section class="team bg-silver py-6 d-sm-none">
 			<div class="text-center headline">
 				<span class="line black"></span>
 				Our Team
