@@ -308,11 +308,12 @@ header img{ width: auto; }
 }
 /*team*/
 .carousel-team{
-	width: 1660px;	
+	/*width: 1660px;	*/
+	margin: 0 -100px;
 }
 .slide-team{
-	width: 300px;
-	margin: 0 16px;
+	width: 20%;
+	padding: 0 16px;
 	padding-top: 30px;
 	opacity: 0.5;
 	transform: margin-top 0.3s ease;

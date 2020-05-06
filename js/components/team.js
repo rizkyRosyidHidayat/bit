@@ -15,7 +15,7 @@ Vue.component('team-section', {
 				<div 
 					class="carousel-container"
 					:style="{
-						'transform': 'translateX('+geser+'px)',
+						'transform': 'translateX('+geser+'%)',
 						'transition': 'transform 0.3s ease'
 					}">
 					<div 
@@ -63,18 +63,23 @@ Vue.component('team-section', {
 		],
 		teams: [1,2,3,4,5],
 		slideActice: 3,
-		geser: -166
+		geser: 0 //-166
 	}),
 	methods: {
 		changeSlide(val) {
 			this.slideActice = 0
+			// if (val >= 3) {
+			// 	let hasil = ((val-3)*-2*166)+(-166)
+			// 	this.geser = hasil
+			// } else if (val === 2) {
+			// 	this.geser = 166
+			// } else {
+			// 	this.geser = 498
+			// }
 			if (val >= 3) {
-				let hasil = ((val-3)*-2*166)+(-166)
-				this.geser = hasil
-			} else if (val === 2) {
-				this.geser = 166
+				this.geser = -20 * (val-3)
 			} else {
-				this.geser = 498
+				this.geser = (20 * (3-val))
 			}
 			setTimeout(() => this.slideActice = val, 300)
 		}

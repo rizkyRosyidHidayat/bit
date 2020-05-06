@@ -18,8 +18,8 @@ Vue.component('banner-section', {
 									SOLAR SAVING CALCULATOR
 								</div>
 							</div>
-							<div class="card-body">
-								<form>
+							<form @submit.prevent="hitungHasil">
+								<div class="card-body">
 									<label>Select Electrical Power</label>
 									<div class="select">
 										<div class="form-control">
@@ -46,7 +46,7 @@ Vue.component('banner-section', {
 											<li 
 												v-for="item in power" :key="item"
 												@click="selectedPower(item)">
-												{{ item }}
+												TR {{ item }}VA
 											</li>
 										</ul>
 									</div>
@@ -59,8 +59,9 @@ Vue.component('banner-section', {
 											Rp
 										</div>
 										<input 
-											type="text" 
+											type="number" 
 											name="bill"
+											v-model="dataSolar.bill"
 											placeholder="Input your mounthly bill"
 											required
 										/>
@@ -83,10 +84,9 @@ Vue.component('banner-section', {
 									<label>No. Telp (optional)</label>
 									<div class="form-control mb-1">
 										<input 
-											type="text" 
+											type="number" 
 											name="telp"
 											placeholder="+628*********"
-											required
 										/>
 									</div>
 									<label>Coverage (%)</label>
@@ -122,10 +122,28 @@ Vue.component('banner-section', {
 									<div class="form-control-message text-error">
 										* Wajib di isi
 									</div>
-								</form>
-							</div>
+								</div>
+								<div class="card-footer d-flex justify-between">
+									<button class="btn">CALCULATE NOW</button>
+									<button class="btn">REFRESH</button>
+								</div>
+							</form>
 							<div class="card-footer">
-								<button class="btn">CALCULATE NOW</button>
+								<div class="title font-weight-normal mb-1">
+									Total : {{ Intl.NumberFormat('id-ID', { maximumSignificantDigits: 4, style: 'currency', currency: 'IDR' }).format(total) }}
+								</div>
+								<div class="title font-weight-normal mb-1">
+									Average Mounthly Saving : 
+								</div>
+								<div class="title font-weight-normal mb-1">
+									Balik Modal : 
+								</div>
+								<div class="title font-weight-normal mb-1">
+									Reduce CO2 : {{reduceCO2}} kg CO2
+								</div>
+								<div class="title font-weight-normal mb-1">
+									Minyak Dunia : {{minyak}} ktoe/year
+								</div>
 							</div>
 						</div>
 					</div>
@@ -145,12 +163,16 @@ Vue.component('banner-section', {
 	data: () => ({
 		isVisible: false,
 		isVisiblePower: false,
-		coverage: [10, 20, 50],
-		power: ['Electric','Solar','Premium'],
+		coverage: [25, 50, 75, 90, 100],
+		power: [450, 900, 1300, 2200, 3500],
 		dataSolar: {
 			coverage: '',
-			power: ''
-		}
+			power: '',
+			bill: ''
+		},
+		total: '',
+		reduceCO2: '',
+		minyak: ''
 	}),
 	methods: {
 		selectedCoverage(val) {
@@ -160,6 +182,19 @@ Vue.component('banner-section', {
 		selectedPower(val) {
 			this.dataSolar.power = val
 			this.isVisiblePower = false
+		},
+		hitungHasil() {
+			let totalWatt = this.dataSolar.power * 8760 * 0.5
+			let idr = 0
+			if (this.dataSolar.power > 1300) 
+				{idr = 1467.28}
+			else 
+				{idr = 1352}
+			this.total = totalWatt * idr / 1000
+
+			this.reduceCO2 = totalWatt * 0.283 / 1000
+
+			this.minyak = totalWatt * 8.59 * 0.00000000001
 		}
 	}
 })
