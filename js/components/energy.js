@@ -21,7 +21,7 @@ Vue.component('energy-section', {
 							Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.
 						</p>
 						<a href="">
-							<button class="btn btn-outline text-uppercase">
+							<button class="btn text-uppercase">
 								Learn more
 							</button>
 						</a>

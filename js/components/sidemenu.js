@@ -31,12 +31,12 @@ Vue.component('sidemenu-section', {
 						</a>
 					</div>
 					<ul class="sidemenu-list">
-						<li v-for="item in navbarNav" :key="item">
+						<li v-for="item in navbarNav" :key="item.text">
 							<a 
-								:href="'#'+item" 
+								:href="item.value" 
 								@click="jumping = item;$emit('active', false)"
 								:class="{'active': item === jumping}">
-								{{ item }}
+								{{ item.text }}
 							</a>
 						</li>
 						<li>
@@ -55,12 +55,15 @@ Vue.component('sidemenu-section', {
 			{ text: '+628-xxxxxxx', icon: 'phone.svg' }
 		],
 		navbarNav: [
-			'overview', 
-			'features', 
-			'why?', 
-			'aplication', 
-			'project', 
-			'consultation'
+			{ text: 'overview', value: '#overview' }, 
+			{ text: 'features', value: '#features' }, 
+			{ text: 'why?', value: '#why?' }, 
+			{ text: 'aplication', value: '#aplication' }, 
+			{ text: 'project', value: '#project' }, 
+			{ text: 'consultation', value: '#consultation' }, 
+			{ text: 'our team', value: '#our_team' }, 
+			{ text: 'testimonial', value: '#testimonial' }, 			
+			{ text: 'our partners', value: '#our_partners' }
 		],
 		jumping: 'overview'
 	})

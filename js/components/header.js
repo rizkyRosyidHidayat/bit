@@ -36,7 +36,7 @@ Vue.component('header-section', {
 							@click="$emit('active', true)"
 						/>
 					</div>
-					<div class="d-sm-none">
+					<div class="d-sm-none d-flex">
 						<a 
 							v-for="item in navbarNav" :key="item"
 							@click="jumping = item" 
@@ -45,6 +45,27 @@ Vue.component('header-section', {
 							:class="{'active': item === jumping?true:false}">
 							{{ item }}
 						</a>
+						<div class="dropdown pa-2 text-uppercase">
+							<div class="d-flex">
+								<div class="mr-1">other</div>
+								<img 
+									src="./img/icon/chevron-down.svg"
+									alt="icon chevron-down" 
+									class="rotate90"
+								/>
+							</div>
+							<ul class="dropdown-menu">
+								<li 
+									v-for="item in otherNav" :key="item.text"
+									@click="jumping = item">
+									<a 
+										class="nav-link text-uppercase"
+										:href="item.value">
+										{{ item.text }}
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="form-control rounded search">
 						<div class="form-control-icon left">
@@ -72,7 +93,7 @@ Vue.component('header-section', {
 								@click="$emit('active', true)"
 							/>
 						</div>
-						<div class="d-sm-none">
+						<div class="d-sm-none d-flex">
 							<a 
 								v-for="item in navbarNav" :key="item"
 								:href="'#'+item"
@@ -81,6 +102,27 @@ Vue.component('header-section', {
 								:class="{'active': item === jumping?true:false}">
 								{{ item }}
 							</a>
+							<div class="dropdown pa-2 text-uppercase">
+								<div class="d-flex">
+									<div class="mr-1">other</div>
+									<img 
+										src="./img/icon/chevron-down.svg"
+										alt="icon chevron-down" 
+										class="rotate90"
+									/>
+								</div>
+								<ul class="dropdown-menu">
+									<li 
+										v-for="item in otherNav" :key="item.text"
+										@click="jumping = item" >
+										<a 
+											class="nav-link text-uppercase"
+											:href="item.value">
+											{{ item.text }}
+										</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 						<div class="form-control rounded search">
 							<div class="form-control-icon left">
@@ -110,8 +152,13 @@ Vue.component('header-section', {
 			'features', 
 			'why?', 
 			'application', 
-			'project', 
-			'consultation'
+			'project'
+		],
+		otherNav: [
+			{ text: 'consultation', value: '#consultation' }, 
+			{ text: 'our team', value: '#our_team' }, 
+			{ text: 'testimonial', value: '#testimonial' }, 			
+			{ text: 'our partners', value: '#our_partners' }
 		],
 		jumping: 'overview'
 	})

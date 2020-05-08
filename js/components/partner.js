@@ -1,6 +1,6 @@
 Vue.component('partner-section', {
 	template: `
-		<section class="partner bg-silver py-6">
+		<section class="partner bg-silver py-6" id="our_partners">
 			<div class="container">
 				<div class="text-center headline mb-5">
 					<span class="line black"></span>

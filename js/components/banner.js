@@ -34,7 +34,7 @@ Vue.component('banner-section', {
 											/>
 											<div class="form-control-icon right">
 												<img 
-													src="./img/icon/chevron-right.svg"
+													src="./img/icon/chevron-down.svg"
 													alt="icon magnify"
 													class="rotate90" 
 												/>
@@ -74,6 +74,7 @@ Vue.component('banner-section', {
 										<input 
 											type="email" 
 											name="email"
+											v-model="dataSolar.email"
 											placeholder="Input your email"
 											required
 										/>
@@ -87,6 +88,7 @@ Vue.component('banner-section', {
 											type="number" 
 											name="telp"
 											placeholder="+628*********"
+											v-model="dataSolar.nohp"
 										/>
 									</div>
 									<label>Coverage (%)</label>
@@ -103,7 +105,7 @@ Vue.component('banner-section', {
 											/>
 											<div class="form-control-icon right">
 												<img 
-													src="./img/icon/chevron-right.svg"
+													src="./img/icon/chevron-down.svg"
 													alt="icon magnify"
 													class="rotate90" 
 												/>
@@ -124,11 +126,18 @@ Vue.component('banner-section', {
 									</div>
 								</div>
 								<div class="card-footer d-flex justify-between">
-									<button class="btn">CALCULATE NOW</button>
-									<button class="btn">REFRESH</button>
+									<button type="submit" class="btn">CALCULATE NOW</button>
+									<div 
+										v-if="isSubmit"
+										@click="refresh" 
+										class="btn">
+										REFRESH
+									</div>
 								</div>
 							</form>
-							<div class="card-footer">
+							<div 
+								v-if="isSubmit"
+								class="card-footer">
 								<div class="title font-weight-normal mb-1">
 									Total : {{ Intl.NumberFormat('id-ID', { maximumSignificantDigits: 4, style: 'currency', currency: 'IDR' }).format(total) }}
 								</div>
@@ -168,11 +177,14 @@ Vue.component('banner-section', {
 		dataSolar: {
 			coverage: '',
 			power: '',
-			bill: ''
+			bill: '',
+			nohp: '',
+			email: ''
 		},
 		total: '',
 		reduceCO2: '',
-		minyak: ''
+		minyak: '',
+		isSubmit: false
 	}),
 	methods: {
 		selectedCoverage(val) {
@@ -184,17 +196,30 @@ Vue.component('banner-section', {
 			this.isVisiblePower = false
 		},
 		hitungHasil() {
-			let totalWatt = this.dataSolar.power * 8760 * 0.5
-			let idr = 0
-			if (this.dataSolar.power > 1300) 
-				{idr = 1467.28}
-			else 
-				{idr = 1352}
-			this.total = totalWatt * idr / 1000
+			this.isSubmit = true
+			if (this.isSubmit) {
+				let totalWatt = this.dataSolar.power * 8760 * 0.5
+				let idr = 0
+				if (this.dataSolar.power > 1300) 
+					{idr = 1467.28}
+				else 
+					{idr = 1352}
+				this.total = totalWatt * idr / 1000
 
-			this.reduceCO2 = totalWatt * 0.283 / 1000
+				this.reduceCO2 = totalWatt * 0.283 / 1000
 
-			this.minyak = totalWatt * 8.59 * 0.00000000001
+				this.minyak = totalWatt * 8.59 * 0.00000000001
+			}
+		},
+		refresh() {
+			this.isSubmit = false
+			this.dataSolar = {
+				coverage: '',
+				power: '',
+				bill: '',
+				nohp: '',
+				email: ''
+			}
 		}
 	}
 })

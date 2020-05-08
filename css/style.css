@@ -17,11 +17,11 @@ img{
 	width: 100%; 
 	display: block;
 }
-.rounded{ border-radius: 100px; }
+.rounded{ border-radius: 100px !important; }
 /*display*/
 .d-flex{ display: flex; }
 .d-block{ display: block !important; }
-.d-lg-none{ display: none; }
+.d-lg-none{ display: none !important; }
 /*flex*/
 .align-center{ align-items: center; }
 .justify-between{ justify-content: space-between; }
@@ -34,6 +34,7 @@ img{
 .bg-red{ background-color: rgb(248,133,125); }
 .bg-white{ background-color: #fff !important; }
 .bg-silver{ background-color: #f4f4f4 !important; }
+.bg-dark-grey{ background-color: rgb(84,106,123) !important; }
 .bg-img{ 
 	background-image: url('../img/consultan.png');
 	background-size: cover;
@@ -240,6 +241,7 @@ header img{ width: auto; }
 	padding: 4px 16px;
 	color: inherit;
 	transition: color 0.2s ease;
+	cursor: pointer;
 }
 .nav-link:hover{
 	color: rgb(241,188,54);
@@ -256,6 +258,23 @@ header img{ width: auto; }
 .search{
 	width: 200px;
 }
+.dropdown{ 
+	padding: 4px 16px;
+	position: relative; 
+	font-weight: bold;
+}
+.dropdown-menu{
+	position: absolute;
+	display: none;
+	left: 0;
+	top: -16px;
+	background-color: #fff;
+	box-shadow: 0 0 8px silver;
+	padding: 4px 0;
+	list-style: none;
+}
+.dropdown-menu li{ padding: 4px 0; }
+.dropdown:hover .dropdown-menu{ display: block; }
 /*banner*/
 .banner{
 	/*margin-top: 16px;*/
@@ -279,26 +298,99 @@ header img{ width: auto; }
 	display: flex;
 	align-items: center;
 }
+.slide-project{ display: none; }
+.slide-project.active{ display: flex; }
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+.carousel-nav{
+	width: 150px;
+	cursor: pointer;
+	background-color: rgba(241,188,54,0.8);
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.carousel-nav.left{
+	margin-right: 32px;
+	margin-left: -32px; 
+}
+.carousel-nav.right{
+	margin-right: -32px;
+	margin-left: 32px; 
+}
+.left-nav-mobile{
+	/*margin-right: 32px;*/
+	margin-right: -32px !important; 
+	position: relative;
+}
+.right-nav-mobile{
+	margin-left: -32px !important;
+	position: relative;
+	/*margin-left: 32px; */
+}
+.img-project{ border-radius: 10px; }
+/*testimoni*/
+.testimoni{
+	padding-left: 32px !important;
+	padding-right: 32px !important;
+}
+.carousel-testimoni{
+	display: flex;
+	align-items: center;
+}
 .carousel-container{
 	width: 100%;
 	display: flex;
+	position: relative;
 }
-.slide{
-	border-radius: 5px;
+.slide-testimoni{
+	border-radius: 10px;
 	overflow: hidden;
-	width: 50%;	
-	opacity: 0.5; 
 	transition: transform 0.3s ease;
+	opacity: 0.7;
 }
-.slide.active{
-	transform: scale(2);
+.slide-testimoni.active{
+	transform: scale(1.2);
 	opacity: 1;
-	z-index: 80;
+	z-index: 1;
 }
-.carousel-nav{
+.img-testimoni{
+	width: 100px;
+	border-radius: 100%;
+	overflow: hidden;
+	margin: 0 16px;
+}
+.icon-testimoni{
+	width: 48px;
+	padding: 8px;
+	border-radius: 100%;
+	border: 1px solid #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.testimoni-nav{
+	position: absolute;
+	z-index: 2;
 	width: 70px;
-	cursor: pointer;
 }
+.testimoni-nav.left{ left: 25%; }
+.testimoni-nav.right{ right: 25%; }
 /*consultation*/
 .consultation-call{
 	height: 100%;
@@ -310,17 +402,16 @@ header img{ width: auto; }
 .carousel-team{
 	/*width: 1660px;	*/
 	margin: 0 -100px;
+	position: relative;
 }
 .slide-team{
 	width: 20%;
 	padding: 0 16px;
 	padding-top: 30px;
-	opacity: 0.5;
 	transform: margin-top 0.3s ease;
 }
 .slide-team.active{
 	margin-top: -30px;
-	opacity: 1;
 }
 .team-sosmed{ width: 30px;margin: 0 8px; }
 .dot {
@@ -339,6 +430,32 @@ header img{ width: auto; }
 .dot.active{
   background-color: #717171;	
 }
+.team-image{ position: relative; }
+.team-desc{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,162,232,0.3);
+	align-items: center;
+	padding: 16px;
+	color: #fff;
+	display: flex;
+	visibility: hidden;
+}
+.team-image:hover .team-desc{ visibility: visible; }
+.carousel-team-nav{
+	position: absolute;
+	width: auto;
+	height: 100%;
+	top: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+}
+.carousel-team-nav.left{ left: 15%; }
+.carousel-team-nav.right{ right: 15%; }
 /*partner*/
 .partner img{ width: auto;margin: 0 32px; }
 /*send*/
@@ -347,9 +464,11 @@ header img{ width: auto; }
 }
 /*footer*/
 footer img{ width: auto; }
-.footer-sosmed{
-	width: 20px;
-	margin: 0 4px;
+.footer{
+	margin: 0;
+	padding: 8px 0;
+	color: #fff;
+	background-color: rgb(241,188,54);
 }
 footer a{
 	text-decoration: none;
@@ -409,7 +528,7 @@ footer a{
 @media screen and (max-width: 400px){
 	.container{ width: 100%; }
 	.d-sm-none{ display: none; }
-	.d-lg-none{ display: block; }
+	.d-lg-none{ display: block !important; }
 	.px-sm-0{ padding-left: 0;padding-right: 0; }
 	.py-6{ padding: 1.5rem 0 !important; }
 	.py-sm-3{ padding: 1.5rem 0 !important; }
@@ -428,15 +547,8 @@ footer a{
 		padding-top: 16px;
 		padding-bottom: 30px;
 	}
-	.plan{ padding: 16px 0; }
 	.plan .d-flex{ flex-wrap: wrap;justify-content: center; }
 	.energy .justify-end{ justify-content: center; }
-	.app, .project{ padding: 16px 0; }
-	.send{ padding: 16px; }
-	.footer{
-		margin: 0;
-		padding: 8px 0;
-		color: #fff;
-		background-color: rgb(241,188,54);
-	}
+	.app, .project, .plan{ padding: 16px 0; }
+	.send{ padding: 16px; }	
 }

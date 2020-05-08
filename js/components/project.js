@@ -12,94 +12,101 @@ Vue.component('project-section', {
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 					</div>
 				</div>
-				<div class="row align-center">
-					<div class="col col-6 col-sm-12 mb-sm-2">
-						<div class="headline font-weight-normal mb-3 text-sm-center">
-							Installaton 2.200 Wat
-						</div>
-						<p class="text-justify">
-							Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.
-						</p>
-						<a href="">
-							<button class="btn btn-outline text-uppercase mr-1">
-								Learn more
-							</button>
-						</a>
-						<a href="">
-							<button class="btn btn-outline text-uppercase">
-								view more project
-							</button>
-						</a>
+				<div class="carousel-project mb-3">
+					<div class="carousel-nav left d-sm-none">
+						<img 
+							src="./img/icon/chevron-left.svg" 
+							alt="chevron-left"
+							@click="changeSlide('left')"
+						/>
 					</div>
-					<div class="col col-6 py-sm-3 col-sm-12">
-						<div class="carousel-project">
-							<div class="carousel-nav">
-								<img 
-									src="./img/icon/chevron-left.svg" 
-									alt="chevron-left"
-									@click="changeSlide('left')"
-								/>
+					<div 
+						v-for="item in slides" :key="item"
+						class="slide-project fade row align-center"
+						:class="{'active': item === slideActive?true:false}">
+						<div class="col col-6 col-sm-12 mb-sm-2">
+							<div class="headline font-weight-normal mb-3 text-sm-center">
+								Installaton 2.200 Wat
 							</div>
-							<div class="carousel-container">
-								<div 
-									v-for="(item, i) in slides" :key="i"
-									class="slide"
-									:class="{'active': slideActive === item?true:false}">
+							<p class="text-justify">
+								Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.
+							</p>
+							<a href="">
+								<button class="btn btn-outline rounded text-uppercase mr-1 mb-sm-2">
+									Learn more
+								</button>
+							</a>
+							<a href="">
+								<button class="btn btn-outline rounded text-uppercase">
+									view more project
+								</button>
+							</a>
+						</div>
+						<div class="col col-6 col-sm-12">
+							<div class="d-flex align-center">
+								<div class="carousel-nav left-nav-mobile d-lg-none">
 									<img 
-										:src="'./img/project/'+item+'.png'" 
-										alt="slide project"
+										src="./img/icon/chevron-left.svg" 
+										alt="chevron-left"
+										@click="changeSlide('left')"
+									/>
+								</div>
+								<img 
+									class="img-project"
+									:src="'./img/project/'+item+'.png'" 
+									alt="image project" 
+								/>
+								<div class="carousel-nav right-nav-mobile d-lg-none">
+									<img 
+										src="./img/icon/chevron-right.svg" 
+										alt="chevron-right"
+										@click="changeSlide('right')"
 									/>
 								</div>
 							</div>
-							<div class="carousel-nav">
-								<img 
-									src="./img/icon/chevron-right.svg" 
-									alt="chevron-right"
-									@click="changeSlide('right')"
-								/>
-							</div>
 						</div>
 					</div>
+					<div class="carousel-nav right d-sm-none">
+						<img 
+							src="./img/icon/chevron-right.svg" 
+							alt="chevron-right"
+							@click="changeSlide('right')"
+						/>
+					</div>
+				</div>				
+				<div class="d-flex justify-center">
+					<span 
+						v-for="item in slides" :key="item"
+						class="dot"
+						:class="{'active': slideActive === item?true:false}"
+						@click="selectSlide(item)"
+					></span>
 				</div>
 			</div>
 		</section>
 	`,
 	data: () => ({
 		slides: [1,2,3],
-		slideActive: 2 //nama gambar 2.png
+		slideActive: 1 //nama gambar 2.png
 	}),
 	methods: {
 		changeSlide(val) {
-			this.slideActive = 0
 			if (val === 'left') {
-				this.slideActive = this.slides[2]
-				setTimeout(() => {
-					let newArray = []
-					let first = this.slides[0]				
-					for (let i = 0;i < 3;i++){
-						if (i < 2) {
-							newArray[i] = this.slides[i+1]
-						} else {
-							newArray[i] = first
-						}
-					}
-					this.slides = newArray
-				}, 300)
+				if (this.slideActive === 1) {
+					this.slideActive = 3
+				} else {
+					this.slideActive--
+				}
 			} else {
-				this.slideActive = this.slides[0]
-				setTimeout(() => {
-					let newArray = []
-					let last = this.slides[2]				
-					for (let i = 0;i < 3;i++){
-						if (i > 0) {
-							newArray[i] = this.slides[i-1]
-						} else {
-							newArray[i] = last
-						}
-					}
-					this.slides = newArray
-				}, 300)		
+				if (this.slideActive === 3) {
+					this.slideActive = 1
+				} else {
+					this.slideActive++	
+				}				
 			}
+		},
+		selectSlide(val) {
+			this.slideActive = val
 		}
 	}
 })

@@ -11,6 +11,7 @@ import './components/partner.js'
 import './components/send.js'
 import './components/footer.js'
 import './components/sidemenu.js'
+import './components/testimoni.js'
 
 const app = new Vue({
 	el: '#app',

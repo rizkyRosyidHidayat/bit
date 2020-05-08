@@ -33,7 +33,7 @@ Vue.component('app-section', {
 							<div class="card-footer">
 								<div class="text-orange">
 									<a :href="item.link" class="nav-link">
-										<button class="btn btn-outlined text-uppercase">
+										<button class="btn btn-outline rounded text-uppercase">
 											Learn More
 										</button>
 									</a>
