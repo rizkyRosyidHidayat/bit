@@ -13,13 +13,13 @@ Vue.component('banner-section', {
 				<div class="row">
 					<div class="col w-40 col-sm-12 mb-sm-2">
 						<div class="card">
-							<div class="card-header">
+							<div class="card-header" style="box-shadow: 0 4px 4px silver;">
 								<div class="title">
 									SOLAR SAVING CALCULATOR
 								</div>
 							</div>
 							<form @submit.prevent="hitungHasil">
-								<div class="card-body">
+								<div class="card-body" style="padding-top: 16px;">
 									<label>Select Electrical Power</label>
 									<div class="select">
 										<div class="form-control">
@@ -69,28 +69,6 @@ Vue.component('banner-section', {
 									<div class="form-control-message text-error mb-1">
 										* Wajib di isi
 									</div>
-									<label>Email</label>
-									<div class="form-control">
-										<input 
-											type="email" 
-											name="email"
-											v-model="dataSolar.email"
-											placeholder="Input your email"
-											required
-										/>
-									</div>
-									<div class="form-control-message text-error mb-1">
-										* Wajib di isi
-									</div>
-									<label>No. Telp (optional)</label>
-									<div class="form-control mb-1">
-										<input 
-											type="number" 
-											name="telp"
-											placeholder="+628*********"
-											v-model="dataSolar.nohp"
-										/>
-									</div>
 									<label>Coverage (%)</label>
 									<div class="select">
 										<div class="form-control">
@@ -123,6 +101,28 @@ Vue.component('banner-section', {
 									</div>
 									<div class="form-control-message text-error">
 										* Wajib di isi
+									</div>
+									<label>Email</label>
+									<div class="form-control">
+										<input 
+											type="email" 
+											name="email"
+											v-model="dataSolar.email"
+											placeholder="Input your email"
+											required
+										/>
+									</div>
+									<div class="form-control-message text-error mb-1">
+										* Wajib di isi
+									</div>
+									<label>No. Telp (optional)</label>
+									<div class="form-control mb-1">
+										<input 
+											type="number" 
+											name="telp"
+											placeholder="+628*********"
+											v-model="dataSolar.nohp"
+										/>
 									</div>
 								</div>
 								<div class="card-footer d-flex justify-between">
