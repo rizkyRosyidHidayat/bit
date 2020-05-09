@@ -53,7 +53,7 @@ Vue.component('banner-section', {
 									<div class="form-control-message text-error mb-1">
 										* Wajib di isi
 									</div>
-									<label>Mounthly Bill</label>
+									<label>Monthly Bill</label>
 									<div class="form-control">
 										<div class="mr-1">
 											Rp

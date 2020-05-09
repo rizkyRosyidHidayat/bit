@@ -21,15 +21,15 @@ Vue.component('project-section', {
 						/>
 					</div>
 					<div 
-						v-for="item in slides" :key="item"
+						v-for="item in slides" :key="item.img"
 						class="slide-project fade row align-center"
-						:class="{'active': item === slideActive?true:false}">
+						:class="{'active': item.img === slideActive?true:false}">
 						<div class="col col-6 col-sm-12 mb-sm-2">
 							<div class="headline font-weight-normal mb-3 text-sm-center">
-								Installaton 2.200 Wat
+								{{ item.title }}
 							</div>
 							<p class="text-justify">
-								Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.
+								{{ item.text }}
 							</p>
 							<a href="">
 								<button class="btn btn-outline rounded text-uppercase mr-1 mb-sm-2">
@@ -53,7 +53,7 @@ Vue.component('project-section', {
 								</div>
 								<img 
 									class="img-project"
-									:src="'./img/project/'+item+'.png'" 
+									:src="'./img/project/'+item.img+'.png'" 
 									alt="image project" 
 								/>
 								<div class="carousel-nav right-nav-mobile d-lg-none">
@@ -76,17 +76,33 @@ Vue.component('project-section', {
 				</div>				
 				<div class="d-flex justify-center">
 					<span 
-						v-for="item in slides" :key="item"
+						v-for="item in slides" :key="item.img"
 						class="dot"
-						:class="{'active': slideActive === item?true:false}"
-						@click="selectSlide(item)"
+						:class="{'active': slideActive === item.img?true:false}"
+						@click="selectSlide(item.img)"
 					></span>
 				</div>
 			</div>
 		</section>
 	`,
 	data: () => ({
-		slides: [1,2,3],
+		slides: [
+			{
+				title: 'Installaton 1.300 Wat',
+				text: 'Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.',
+				img: 1
+			},
+			{
+				title: 'Installaton 2.200 Wat',
+				text: 'Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.',
+				img: 2
+			},
+			{
+				title: 'Installaton 3.200 Wat',
+				text: 'Our sofware is made so you can access and manage your sistem and expenses  online  at  any  tme  from  any  device.  It  provides  detailed monitoring system and value reports with graphs so you can easilly see your  system nd budget at a  dashboard . Read below to fnd out more.',
+				img: 3
+			}
+		],
 		slideActive: 1 //nama gambar 2.png
 	}),
 	methods: {

@@ -25,14 +25,14 @@ const app = new Vue({
 	}
 })
 
-const navbarNav = document.querySelector('.navbar')
+// const navbarNav = document.querySelector('.navbar')
 
-function scrollFunction() {
-	if (document.body.scrollTop > 66 || document.documentElement.scrollTop > 20) {    
-    navbarNav.setAttribute('class', 'navbar active') 
-  } else {
-    navbarNav.setAttribute('class', 'navbar') 
-  }
-}
+// function scrollFunction() {
+// 	if (document.body.scrollTop > 66 || document.documentElement.scrollTop > 20) {    
+//     navbarNav.setAttribute('class', 'navbar active') 
+//   } else {
+//     navbarNav.setAttribute('class', 'navbar') 
+//   }
+// }
 
-window.onscroll = function() {scrollFunction()};
+// window.onscroll = function() {scrollFunction()};

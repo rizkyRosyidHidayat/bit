@@ -8,11 +8,11 @@ Vue.component('footer-section', {
 					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>Address</b>
 						<p>
-							Jakarta ofce: Jl. Kamal Raya, Jaya 8 No.6, 
-							RT.7/RW.9, Cengkareng
-							Bandung Ofce : Jalan Kebun Bibit Barat 
-							No.29, Bandung Wetan, Kota Bandung
-							Bali Ofce : Jalan Gatot Subroto No. 204, 
+							Jakarta Office: Jl. Kamal Raya, Jaya 8 No.6, 
+							RT.7/RW.9, Cengkareng <br>
+							Bandung Office : Jalan Kebun Bibit Barat 
+							No.29, Bandung Wetan, Kota Bandung<br>
+							Bali Office : Jalan Gatot Subroto No. 204, 
 							Tonja, Kota Denpasar
 						</p>
 					</div>
@@ -29,8 +29,8 @@ Vue.component('footer-section', {
 					</div>
 					<div class="col col-3 col-sm-12 mb-sm-2">
 						<b>Get in Touch</b>
+						<p> www.BTIEnergy.com </p>
 						<p>
-							www.BTIEnergy.com <br>
 							+628-xxxxxxx
 						</p>
 						<div class="d-flex">
