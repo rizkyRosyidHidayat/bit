@@ -1,8 +1,11 @@
+import teams from './team_data.js'
+
 Vue.component('carousel-team', {
 	template: `
 		<div class="d-sm-none">
 			<div class="carousel-team mb-5">
-				<div class="carousel-team-nav left d-sm-none">
+				<div
+					class="carousel-team-nav left d-sm-none">
 					<div 
 						style="width: 70px;"
 						class="carousel-nav">
@@ -13,7 +16,8 @@ Vue.component('carousel-team', {
 						/>
 					</div>
 				</div>
-				<div class="carousel-team-nav right d-sm-none">
+				<div
+					class="carousel-team-nav right d-sm-none">
 					<div 
 						style="width: 70px;"
 						class="carousel-nav">
@@ -30,48 +34,52 @@ Vue.component('carousel-team', {
 						'transform': 'translateX('+geser+'%)',
 						'transition': 'transform 0.3s ease'
 					}">
-					
-					<div 
-						v-for="item in teams" :key="item"
-						class="slide-team fade"
-						:class="{'active': slideActive === item?true:false}">
-						<div class="card text-center">
-							<div class="team-image">
-								<img src="./img/team.png" alt="team" />
-								<div class="team-desc">
-									<div>
-										<p>Lorem ipsum dolor ssit amet</p>
-										<p>Lorem ipsum dolor ssit amet</p>
+					<template v-for="(item, i) in teams">
+						<div 
+							v-if="i < visibleSlide"
+							:key="i"
+							class="slide-team mb-3"
+							:class="{'active': slideActive === i?true:false}">
+							<div class="card text-center">
+								<div 
+									class="team-image"
+									:style="'background-image: url(img/team/'+item.img+'.png)'">
+									<div 
+										class="team-desc"
+										:style="{'visibility': slideActive === i?'hidden':'visible'}">
+										<div 
+											v-html="item.desc"
+											class="team-text-desc"></div>
 									</div>
 								</div>
-							</div>
-							<div class="card-body bg-orange">
-								<br>
-								<div class="headline">Jacob</div>
-								<div>Founder</div>
-							</div>
-							<div class="card-footer bg-orange d-flex justify-center">
-								<a 
-									v-for="item in sosmed" :key="item.icon"
-									:href="item.link">
-									<img 
-										class="team-sosmed"
-										:src="'./img/icon/'+item.icon" 
-										:alt="item.icon" 
-									/>
-								</a>
+								<div class="card-body bg-orange">
+									<br>
+									<div class="title">{{ item.name }}</div>
+									<!-- <div>Founder</div> -->
+								</div>
+								<div class="card-footer bg-orange d-flex justify-center">
+									<a 
+										v-for="item in sosmed" :key="item.icon"
+										:href="item.link">
+										<img 
+											class="team-sosmed"
+											:src="'./img/icon/'+item.icon" 
+											:alt="item.icon" 
+										/>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
+					</template>
 				</div>
 			</div>
 
 			<div class="d-flex justify-center">
 				<span 
-					v-for="item in teams" :key="item"
+					v-for="(item, i) in teams" :key="i"
 					class="dot"
-					:class="{'active': slideActive === item?true:false}"
-					@click="selectSlide(item)"
+					:class="{'active': selectedIndex === i?true:false}"
+					@click="selectSlide(i)"
 				></span>
 			</div>
 		</div>
@@ -83,39 +91,63 @@ Vue.component('carousel-team', {
 			{ icon: 'twitter.svg', link: '' },
 			{ icon: 'whatsapp.svg', link: '' }
 		],
-		teams: [1,2,3,4,5],
-		slideActive: 3,
-		geser: 0 //-166
+		teams: teams,		
+		slideActive: 2,
+		geser: 0,
+		visibleSlide: 5,
+		selectedIndex: 2
 	}),
 	methods: {
 		selectSlide(val) {
+			let active = this.selectedIndex
 			this.slideActive = 0
-			if (val >= 3) {
-				this.geser = -20 * (val-3)
-			} else {
-				this.geser = (20 * (3-val))
-			}
-			setTimeout(() => this.slideActive = val, 300)
-		},
-		selectSlide1(val) {
-			this.slideActive = val
+			
+			let hasil = active - val
+			if (hasil < 0) {
+				let endIndex = hasil * -1
+				let slicing = this.teams.slice(0, endIndex)
+				this.teams.splice(0, endIndex)
+				this.teams = this.teams.concat(slicing)
+			}else{
+				let startIndex = 9 - hasil
+				let slicing = this.teams.slice(startIndex, 9)
+				this.teams.splice(startIndex, hasil)
+				this.teams = slicing.concat(this.teams)
+			}			
+			
+			this.selectedIndex = val
+			setTimeout(() => {
+				// if (val >= 3) {
+				// 	this.geser = -20 * (val-3)
+				// } else {
+				// 	this.geser = (20 * (3-val))
+				// }
+				this.slideActive = 2
+			}, 300)
 		},
 		changeSlide(val){
 			let active = this.slideActive
 			this.slideActive = 0
-			console.log(val)
 			if (val === 'left') {
 				if (active < 5) {
-					this.geser = this.geser - 20
-					active++
+					// this.geser = this.geser - 20
+					if (this.selectedIndex === 8) this.selectedIndex = -1
+					this.selectedIndex++
+
+					this.teams.push(this.teams[0])
+					this.teams.shift()
 				}
 			} else {
 				if (active > 1) {
-					this.geser = this.geser + 20
-					active--
+					// this.geser = this.geser + 20
+					if (this.selectedIndex === 0) this.selectedIndex = 9
+					this.selectedIndex--
+					
+					this.teams.unshift(this.teams[8])
+					this.teams.pop()
 				}
 			}
-			setTimeout(() => this.slideActive = active, 300)
+			setTimeout(() => this.slideActive = 2, 500)
 		}
 	}
 })
@@ -133,9 +165,9 @@ Vue.component('carousel-team-mobile', {
 						/>
 					</div>
 					<div 
-						v-for="item in teams" :key="item"
+						v-for="item in teams" :key="item.img"
 						class="slide-project fade col-sm-12 align-center"
-						:class="{'active': item === slideActive?true:false}">
+						:class="{'active': item.img === slideActive?true:false}">
 						
 						<div class="col-sm-12">
 							<div class="d-flex align-center">
@@ -149,19 +181,20 @@ Vue.component('carousel-team-mobile', {
 									/>
 								</div>
 								<div class="card text-center">
-									<div class="team-image">
-										<img src="./img/team.png" alt="team" />
-										<div class="team-desc">
-											<div>
-												<p>Lorem ipsum dolor ssit amet</p>
-												<p>Lorem ipsum dolor ssit amet</p>
-											</div>
+									<div 
+										class="team-image"
+										:style="'background-image: url(img/team/'+item.img+'.png)'">
+										<div 
+											class="team-desc"
+											:style="{'visibility': slideActive === item.img?'hidden':'visible'}">
+											<div 
+												v-html="item.desc"
+												class="team-text-desc"></div>
 										</div>
 									</div>
 									<div class="card-body bg-orange">
 										<br>
-										<div class="headline">Jacob</div>
-										<div>Founder</div>
+										<div class="title">{{ item.name }}</div>
 									</div>
 									<div class="card-footer bg-orange d-flex justify-center">
 										<a 
@@ -197,10 +230,10 @@ Vue.component('carousel-team-mobile', {
 				</div>				
 			<div class="d-flex justify-center">
 				<span 
-					v-for="item in teams" :key="item"
+					v-for="item in teams" :key="item.img"
 					class="dot"
-					:class="{'active': slideActive === item?true:false}"
-					@click="selectSlide(item)"
+					:class="{'active': slideActive === item.img?true:false}"
+					@click="selectSlide(item.img)"
 				></span>
 			</div>
 		</div>
@@ -212,19 +245,19 @@ Vue.component('carousel-team-mobile', {
 			{ icon: 'twitter.svg', link: '' },
 			{ icon: 'whatsapp.svg', link: '' }
 		],
-		teams: [1,2,3,4,5],
-		slideActive: 3
+		teams: teams,
+		slideActive: 1
 	}),	
 	methods: {
 		changeSlide(val) {
 			if (val === 'left') {
 				if (this.slideActive === 1) {
-					this.slideActive = 5
+					this.slideActive = 9
 				} else {
 					this.slideActive--
 				}
 			} else {
-				if (this.slideActive === 5) {
+				if (this.slideActive === 9) {
 					this.slideActive = 1
 				} else {
 					this.slideActive++	
