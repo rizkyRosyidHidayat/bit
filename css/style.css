@@ -91,6 +91,7 @@ img{
 	padding: 4px 8px;
 	margin: 4px 0;
 	border: 1px solid grey;
+	border-radius: 3px;
 }
 .form-control.white{
 	border: 1px solid #fff;
@@ -208,13 +209,6 @@ img{
 /*header*/
 header{
 	padding: 16px 0;
-	position: fixed;
-	width: 100%;
-	left: 0;
-	top: 0;
-	box-shadow: 4px 0 8px silver;	
-	background-color: #fff;
-	z-index: 98;
 }
 header img{ width: auto; }
 .logo{
@@ -273,7 +267,7 @@ header img{ width: auto; }
 .dropdown-menu{
 	position: absolute;
 	display: none;
-	left: 0;
+	right: 0;
 	top: -16px;
 	background-color: #fff;
 	box-shadow: 0 0 8px silver;
@@ -284,7 +278,6 @@ header img{ width: auto; }
 .dropdown:hover .dropdown-menu{ display: block; }
 /*banner*/
 .banner{
-	margin-top: 125px;
 	padding-top: 40px;
 	padding-bottom: 56px;
 	background-image: url('../img/banner.png');
@@ -564,13 +557,14 @@ footer a{
 	.line{ width: 30px;display: none; }
 	.logo{ height: 30px; }
 	.navbar{ padding: 8px 0; }
-	.banner{ 
-		margin-top: 62px; 
+	.banner{
 		padding-top: 16px;
 		padding-bottom: 30px;
 	}
 	.plan .d-flex{ flex-wrap: wrap;justify-content: center; }
 	.energy .justify-end{ justify-content: center; }
 	.app, .project, .plan{ padding: 16px 0; }
+	.partner{ padding-left: 16px !important;padding-right: 16px !important; }
+	.partner img{ width: 100%;margin: 0; }
 	.send{ padding: 16px; }	
 }
