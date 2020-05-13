@@ -12,7 +12,7 @@ Vue.component('sidemenu-section', {
 				<div class="sidemenu-header">
 					<img 
 						src="./img/logo.png" 
-						class="logo"
+						class="logo mb-1"
 						alt="logo bit energy" 
 					/>
 					<div class="d-flex justify-between">
@@ -63,7 +63,7 @@ Vue.component('sidemenu-section', {
 			{ text: 'consultation', value: '#consultation' }, 
 			{ text: 'our team', value: '#our_team' }, 
 			{ text: 'testimonial', value: '#testimonial' }, 			
-			{ text: 'our partners', value: '#our_partners' }
+			{ text: 'our partnership', value: '#our_partners' }
 		],
 		jumping: 'overview'
 	})

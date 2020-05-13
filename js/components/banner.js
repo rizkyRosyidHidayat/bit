@@ -1,20 +1,29 @@
 Vue.component('banner-section', {
 	template: `
-		<section class="banner bg-orange" id="overview">
+		<section class="banner" id="overview">
 			<div class="container">
-				<div class="text-center text-white mb-3">
-					<div class="headline mb-1">
-						Save Your Energy With BTI
-					</div>
-					<span>
-						Hemat energy dari sekarang demi masa depan yang terang. 
-					</span>
-				</div>
 				<div class="row">
+					<div class="col w-60 col-sm-12 d-lg-none">						
+						<div class="text-white text-center mb-3">
+							<div class="headline mb-1">
+								Save Your Energy <br>
+								With BTIEnergy
+							</div>
+							<span>
+								Hemat energy dari sekarang demi masa depan yang terang. 
+							</span>
+						</div>
+					</div>
 					<div class="col w-40 col-sm-12 mb-sm-2">
 						<div class="card">
 							<div class="card-header" style="box-shadow: 0 4px 4px silver;">
-								<div class="title">
+								<div class="title d-flex align-center">
+									<img 
+										src="./img/calculator.png" 
+										height="30"
+										style="width: auto;margin-right: 1rem;" 
+										alt="icon marker" 
+									/>
 									SOLAR SAVING CALCULATOR
 								</div>
 							</div>
@@ -156,14 +165,16 @@ Vue.component('banner-section', {
 							</div>
 						</div>
 					</div>
-					<div class="col w-60 col-sm-12">
-						<img 
-							src="./img/ilustrasi.png"
-							alt="ilustrasi"
-							style="width: 90%;"
-							align="right"
-							class="col-sm-12"
-						/>
+					<div class="col w-60 col-sm-12 d-sm-none">						
+						<div class="text-white mb-3">
+							<div class="headline mb-1">
+								Save Your Energy <br>
+								With BTIEnergy
+							</div>
+							<span>
+								Hemat energy dari sekarang demi masa depan yang terang. 
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -214,7 +214,7 @@ header{
 	top: 0;
 	box-shadow: 4px 0 8px silver;	
 	background-color: #fff;
-	z-index: 1000;
+	z-index: 98;
 }
 header img{ width: auto; }
 .logo{
@@ -287,6 +287,9 @@ header img{ width: auto; }
 	margin-top: 125px;
 	padding-top: 40px;
 	padding-bottom: 56px;
+	background-image: url('../img/banner.png');
+	background-size: cover;
+	background-position: center;
 }
 /*plan*/
 .plan{ padding: 32px 0; }
@@ -562,7 +565,7 @@ footer a{
 	.logo{ height: 30px; }
 	.navbar{ padding: 8px 0; }
 	.banner{ 
-		margin-top: 113px; 
+		margin-top: 62px; 
 		padding-top: 16px;
 		padding-bottom: 30px;
 	}

@@ -1,6 +1,6 @@
 Vue.component('choose-plan', {
 	template: `
-		<section class="plan bg-blue text-white mb-6">
+		<section class="plan bg-orange text-white mb-6">
 			<div class="container">
 				<div class="d-flex justify-between align-center">
 					<div class="headline font-weight-normal mb-sm-2 text-center">

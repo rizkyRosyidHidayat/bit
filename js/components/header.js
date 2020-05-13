@@ -2,14 +2,21 @@ Vue.component('header-section', {
 	template: `
 		<header>
 			<div class="container">
-				<div class="header mb-1">
-					<a href="">
-						<img 
-							src="./img/logo.png" 
-							class="logo"
-							alt="logo bit energy" 
-						/>
-					</a>
+				<div class="header mb-1 d-sm-none">
+					<div class="d-flex align-center">
+						Our Contribution :
+						<div 
+							style="margin: 0 16px;"
+							class="d-flex align-center">
+							<img 
+								src="./img/icon/lighting.svg" 
+								height="30" 
+								alt="icon marker" 
+							/>
+							80.23Mhw
+						</div>
+						CO2 Avoided : 70,4 Kg
+					</div>
 					<div class="d-flex">
 						<a 
 							v-for="item in headerNav" :key="item.text"
@@ -28,6 +35,13 @@ Vue.component('header-section', {
 					</div>
 				</div>
 				<div class="navbar-nav">
+					<a href="">
+						<img 
+							src="./img/logo.png" 
+							class="logo"
+							alt="logo bit energy" 
+						/>
+					</a>
 					<div class="d-lg-none">
 						<img 
 							src="./img/icon/menu.svg"
@@ -67,25 +81,13 @@ Vue.component('header-section', {
 							</ul>
 						</div>
 					</div>
-					<div class="form-control rounded search">
-						<div class="form-control-icon left">
-							<img 
-								src="./img/icon/magnify.svg"
-								alt="icon magnify" 
-							/>
-						</div>
-						<input 
-							type="text" 
-							name="search" 
-							placeholder="Find Something"
-						/>
-					</div>
 				</div>
 			</div>			
 		</header>
 	`,
 	data: () => ({
 		headerNav: [
+			{ text: 'SIGN IN', icon: 'account.svg' },
 			{ text: 'INDONESIA', icon: 'marker.svg' },
 			{ text: '+628-xxxxxxx', icon: 'phone.svg' }
 		],
